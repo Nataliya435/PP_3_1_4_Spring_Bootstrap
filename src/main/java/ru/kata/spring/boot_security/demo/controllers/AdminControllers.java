@@ -32,13 +32,6 @@ public class AdminControllers {
         return "admin/all-Persons";
     }
 
-    @GetMapping("/new")
-    public String newUser(Model model, @ModelAttribute("person") Person person) {
-        List<Role> roles = roleService.getUniqAllRoles();
-        model.addAttribute("rolesAdd", roles);
-        return "admin/add-Person";
-    }
-
     @GetMapping("/user-create")
     public String createUserForm(@ModelAttribute("person") Person person){
     return "admin/all-Persons";
