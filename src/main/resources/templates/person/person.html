@@ -14,7 +14,7 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <span class="navbar-brand mb-0 h1"
-              th:text = "${person.login} + '  with role:  ' + ${person.roles}">
+              th:text = "${person.getLogin()} + '  with role:  ' + ${person.getRoles()}">
         </span>
         <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
     </div>
@@ -40,6 +40,7 @@
                         <caption><p class="fw-bold">About user</p></caption>
                         <thead class="table-dark">
                         <tr>
+                            <th>Id</th>
                             <th>Name</th>
                             <th>Surname</th>
                             <th>Login</th>
@@ -50,12 +51,13 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td th:text="${person.name}"></td>
-                            <td th:text="${person.surname}"></td>
-                            <td th:text="${person.login}"></td>
-                            <td th:text="${person.age}"></td>
-                            <td th:text="${person.password}"></td>
-                            <td th:text="${person.roles}"></td>
+                            <td th:text="${person.getId()}"></td>
+                            <td th:text="${person.getName()}"></td>
+                            <td th:text="${person.getSurname()}"></td>
+                            <td th:text="${person.getLogin()}"></td>
+                            <td th:text="${person.getAge()}"></td>
+                            <td th:text="${person.getPassword()}"></td>
+                            <td th:text="${person.getRoles()}"></td>
                         </tr>
                         </tbody>
                     </table>
