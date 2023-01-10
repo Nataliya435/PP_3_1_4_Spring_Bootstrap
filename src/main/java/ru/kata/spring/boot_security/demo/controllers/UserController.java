@@ -17,6 +17,6 @@ public class UserController {
     @GetMapping("/user")
     public String user(Model model, @AuthenticationPrincipal User user) {
         model.addAttribute("user", user);
-        return "user/user";
+        return "/user";
     }
 }
