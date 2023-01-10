@@ -8,8 +8,8 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "person")
-public class Person implements UserDetails {
+@Table(name = "user")
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -22,16 +22,16 @@ public class Person implements UserDetails {
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "person_roles",
-            joinColumns = @JoinColumn(name = "person_id"),
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
 
 
-    public Person() {
+    public User() {
     }
 
-    public Person(Long id, String login, String name, String surname, Long age, String password, Set<Role> roles) {
+    public User(Long id, String login, String name, String surname, Long age, String password, Set<Role> roles) {
         this.id = id;
         this.login = login;
         this.name = name;
@@ -94,7 +94,7 @@ public class Person implements UserDetails {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", name='" + name + '\'' +

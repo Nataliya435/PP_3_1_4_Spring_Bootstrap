@@ -5,14 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import ru.kata.spring.boot_security.demo.models.Person;
+import ru.kata.spring.boot_security.demo.models.User;
 
 @Controller
-public class UserControllers {
+public class UserController {
 
+    @GetMapping("/login")
+    public String loginPage() {
+        return "/login";
+    }
     @GetMapping("/user")
-    public String person(Model model, @AuthenticationPrincipal Person person) {
-        model.addAttribute("person", person);
-        return "person/person";
+    public String user(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("user", user);
+        return "user/user";
     }
 }

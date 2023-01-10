@@ -79,20 +79,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="person : ${allPersons}">
-                                    <td th:utext="${person.id}">...</td>
-                                    <td th:utext="${person.getName()}">...</td>
-                                    <td th:utext="${person.getSurname()}">...</td>
-                                    <td th:utext="${person.getLogin()}">...</td>
-                                    <td th:utext="${person.getAge()}">...</td>
-                                    <td th:utext="${person.getPassword()}">...</td>
-                                    <td th:utext="${person.getRoles()}">...</td>
+                                <tr th:each="user : ${allUsers}">
+                                    <td th:utext="${user.id}">...</td>
+                                    <td th:utext="${user.getName()}">...</td>
+                                    <td th:utext="${user.getSurname()}">...</td>
+                                    <td th:utext="${user.getLogin()}">...</td>
+                                    <td th:utext="${user.getAge()}">...</td>
+                                    <td th:utext="${user.getPassword()}">...</td>
+                                    <td th:utext="${user.getRoles()}">...</td>
                                     <td>
                                         <button class="btn btn-warning" data-bs-toggle="modal"
-                                                th:data-bs-target="${'#eMdl'+ person.getId()}"
-                                                th:data-row="${person}">Edit
+                                                th:data-bs-target="${'#eMdl'+ user.getId()}"
+                                                th:data-row="${user}">Edit
                                         </button>
-                                        <div class="modal fade" th:id="${'eMdl'+ person.getId()}" tabindex="-1"
+                                        <div class="modal fade" th:id="${'eMdl'+ user.getId()}" tabindex="-1"
                                              aria-labelledby="edit" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -102,20 +102,20 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <form th:method="PATCH" th:action="@{admin/user-update}"
-                                                          th:object="${person}">
+                                                          th:object="${user}">
 
                                                         <div class="modal-body">
                                                             <div class="mb-3">
                                                                 <label for="idEdit" class="col-form-label">ID</label>
                                                                 <input type="text"
-                                                                       th:value="${person.getId()}" name="id"
+                                                                       th:value="${user.getId()}" name="id"
                                                                        class="form-control" id="idEdit" readonly/>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="nameEdit"
                                                                        class="col-form-label">Name</label>
                                                                 <input type="text"
-                                                                       th:value="${person.getName()}" name="name"
+                                                                       th:value="${user.getName()}" name="name"
                                                                        class="form-control" id="nameEdit"
                                                                        required minlength="2" maxlength="20"/>
                                                             </div>
@@ -123,7 +123,7 @@
                                                                 <label for="SurNameEdit"
                                                                        class="col-form-label">Surname</label>
                                                                 <input type="text"
-                                                                       th:value="${person.getSurname()}" name="Surname"
+                                                                       th:value="${user.getSurname()}" name="Surname"
                                                                        class="form-control" id="SurNameEdit"
                                                                        required minlength="2" maxlength="20"/>
                                                             </div>
@@ -131,20 +131,20 @@
                                                                 <label for="loginEdit"
                                                                        class="col-form-label">Login</label>
                                                                 <input type="text"
-                                                                       th:value="${person.getLogin()}" name="login"
+                                                                       th:value="${user.getLogin()}" name="login"
                                                                        class="form-control" id="loginEdit" readonly/>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="ageEdit" class="col-form-label">Age</label>
                                                                 <input type="number"
-                                                                       th:value="${person.getAge()}" name="age"
+                                                                       th:value="${user.getAge()}" name="age"
                                                                        class="form-control" id="ageEdit"/>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="passEdit"
                                                                        class="col-form-label">Password</label>
                                                                 <input type="password"
-                                                                       th:value="${person.getPassword()}"
+                                                                       th:value="${user.getPassword()}"
                                                                        name="password"
                                                                        class="form-control" id="passEdit"
                                                                        required minlength="2" maxlength="20"/>
@@ -153,7 +153,7 @@
                                                                 <label class="container-fluid "
                                                                        for="rolesEdit">Role</label>
                                                                 <select id="rolesEdit" class="form-select col-md-5"
-                                                                        th:value="${person.getRoles()}" name="roles"
+                                                                        th:value="${user.getRoles()}" name="roles"
                                                                         multiple="" size="2">
                                                                     <option value="1">ADMIN</option>
                                                                     <option value="2">USER</option>
@@ -174,10 +174,10 @@
                                     <td>
 
                                         <button class="btn btn-danger" data-bs-toggle="modal"
-                                                th:data-bs-target="${'#dMdl'+ person.getId()}"
-                                                th:data-row="${person}">Delete
+                                                th:data-bs-target="${'#dMdl'+ user.getId()}"
+                                                th:data-row="${user}">Delete
                                         </button>
-                                        <div class="modal fade" th:id="${'dMdl'+ person.getId()}" tabindex="-1"
+                                        <div class="modal fade" th:id="${'dMdl'+ user.getId()}" tabindex="-1"
                                              aria-labelledby="delete" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -188,27 +188,27 @@
                                                     </div>
                                                     <form th:method="DELETE"
                                                           th:action="@{admin/user-delete}"
-                                                          th:object="${person.getId()}">
+                                                          th:object="${user.getId()}">
                                                         <div class="modal-body">
                                                             <div class="mb-3">
 
                                                                 <label for="idDelete" class="col-form-label">ID</label>
                                                                 <input type="text"
-                                                                       th:value="${person.getId()}" name="id"
+                                                                       th:value="${user.getId()}" name="id"
                                                                        class="form-control" id="idDelete" readonly/>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="nameDelete"
                                                                        class="col-form-label">Name</label>
                                                                 <input type="text"
-                                                                       th:value="${person.getName()}" name="name"
+                                                                       th:value="${user.getName()}" name="name"
                                                                        class="form-control" id="nameDelete" readonly/>
                                                             </div>
 
                                                             <div class="mb-3">
                                                                 <label for="surNameDelete" class="col-form-label">Surname</label>
                                                                 <input type="text"
-                                                                       th:value="${person.getSurname()}" name="Surname"
+                                                                       th:value="${user.getSurname()}" name="Surname"
                                                                        class="form-control" id="surNameDelete"
                                                                        readonly/>
                                                             </div>
@@ -217,20 +217,20 @@
                                                                 <label for="loginDelete"
                                                                        class="col-form-label">Login</label>
                                                                 <input type="text"
-                                                                       th:value="${person.getLogin()}" name="login"
+                                                                       th:value="${user.getLogin()}" name="login"
                                                                        class="form-control" id="loginDelete" readonly/>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="ageDelete"
                                                                        class="col-form-label">Age</label>
                                                                 <input type="number"
-                                                                       th:value="${person.getAge()}" name="age"
+                                                                       th:value="${user.getAge()}" name="age"
                                                                        class="form-control" id="ageDelete" readonly/>
 
                                                                 <div class="mb-3">
                                                                     <label for="passDelete" class="col-form-label">Password</label>
                                                                     <input type="password"
-                                                                           th:value="${person.getPassword()}"
+                                                                           th:value="${user.getPassword()}"
                                                                            name="password"
                                                                            class="form-control" id="passDelete"
                                                                            readonly/>
@@ -239,7 +239,7 @@
                                                                     <label for="rolesDelete"
                                                                            class="col-form-label">Role</label>
                                                                     <input type="text"
-                                                                           th:value="${person.getRoles()}" name="roles"
+                                                                           th:value="${user.getRoles()}" name="roles"
                                                                            class="form-control" id="rolesDelete"
                                                                            readonly/>
                                                                 </div>
@@ -268,7 +268,7 @@
                             <div class="row col-sm-10 text-center">
                                 <h4>Add new user</h4>
                             </div>
-                            <form th:method="POST" th:action="@{/admin/user-create}" th:object="${person}">
+                            <form th:method="POST" th:action="@{/admin/user-create}" th:object="${user}">
                                 <div class="mb-3">
                                     <label for="idNew" class="col-form-label">ID</label>
                                     <input type="text" name="id"
