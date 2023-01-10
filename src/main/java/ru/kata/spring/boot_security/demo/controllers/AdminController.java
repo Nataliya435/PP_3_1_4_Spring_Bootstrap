@@ -57,7 +57,7 @@ public class AdminController {
     @GetMapping("/delete/{id}")
     public String deleteUserForm(@PathVariable("id") Long id, Model model){
         model.addAttribute("user", userService.getUserById(id));
-        return "admin/all-Uqsers";
+        return "admin/all-Users";
     }
     @DeleteMapping("admin/user-delete")
     public String deleteUser(Long id) {
